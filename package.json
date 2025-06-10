@@ -1,0 +1,34 @@
+{
+  "name": "basic-chat-participant",
+  "displayName": "Basic Chat Participant",
+  "description": "A basic VS Code chat participant for learning purposes",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "chatParticipants": [
+      {
+        "id": "basic-chat-participant.assistant",
+        "name": "assistant",
+        "description": "A basic learning assistant",
+        "isSticky": true
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/node": "18.x",
+    "typescript": "^5.2.2"
+  }
+}
