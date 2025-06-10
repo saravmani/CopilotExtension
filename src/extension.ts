@@ -12,7 +12,7 @@ export function activate(context: vscode.ExtensionContext) {
     ) => {
         // Simple greeting and echo functionality
         if (request.prompt.toLowerCase().includes('hello') || request.prompt.toLowerCase().includes('hi')) {
-            stream.markdown('👋 Hi! Sarav I\'m your basic learning assistant. How can I help you today?');
+            stream.markdown('👋 Hi! Sarav mani I\'m your basic learning assistant. How can I help you today?');
             return;
         }
 
