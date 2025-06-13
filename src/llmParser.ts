@@ -21,9 +21,12 @@ Available functions:
 - MultiplyNumbers(a, b): Multiplies two numbers  
 - SearchPortfolio(query): Searches portfolio data using REST API and AI analysis
 - ExecuteScript(scriptCode, args): Executes PowerShell scripts with parameters
+- AnalyzeLogErrors(logPath, maxEntries): Analyzes log files for errors and provides AI solutions
+- ReadLogFile(logPath, maxEntries): Reads log files and extracts error entries
+- ListLogConfigurations(): Lists all configured log files with environment and component information
 
 Respond ONLY with a JSON object in this exact format:
-{"functionName": "FunctionName", "args": [param1, param2], "type": "math|api|script"}
+{"functionName": "FunctionName", "args": [param1, param2], "type": "math|api|script|log"}
 
 If no function should be called, respond with: {"functionName": null, "args": [], "type": "none"}
 
@@ -33,6 +36,11 @@ Examples:
 - "Search for John's projects" → {"functionName": "SearchPortfolio", "args": ["John's projects"], "type": "api"}
 - "Run script1 with hello and world" → {"functionName": "ExecuteScript", "args": ["script1", ["hello", "world"]], "type": "script"}
 - "Execute calculator script with 15 and 25" → {"functionName": "ExecuteScript", "args": ["calculator", ["15", "25", "add"]], "type": "script"}
+- "Analyze errors in C:\\logs\\app.log" → {"functionName": "AnalyzeLogErrors", "args": ["C:\\logs\\app.log", 4], "type": "log"}
+- "Read log file ./error.log" → {"functionName": "ReadLogFile", "args": ["./error.log", 4], "type": "log"}
+- "Check logs for production api" → {"functionName": "AnalyzeLogErrors", "args": ["production api", 4], "type": "log"}
+- "Analyze dev frontend errors" → {"functionName": "AnalyzeLogErrors", "args": ["dev frontend", 4], "type": "log"}
+- "List log configurations" → {"functionName": "ListLogConfigurations", "args": [], "type": "log"}
 - "Hello there" → {"functionName": null, "args": [], "type": "none"}
 
 User input: "${input}"`;

@@ -43,7 +43,7 @@ export function activate(context: vscode.ExtensionContext) {
 
         // Simple greeting and echo functionality
         if (request.prompt.toLowerCase().includes('hello') || request.prompt.toLowerCase().includes('hi')) {
-            stream.markdown('👋 Hi! Sarav mani I\'m your AI-powered assistant! I can do math calculations and search portfolio data.');
+            stream.markdown('👋 Hi! Sarav mani I\'m your AI-powered assistant! I can do math calculations, search portfolio data, run scripts, and analyze log files.');
             stream.markdown('\n\n🧠 **Try asking me**:');
             stream.markdown('\n- "Add 5 and 3"');
             stream.markdown('\n- "What is 10 times 4?"');
@@ -51,6 +51,8 @@ export function activate(context: vscode.ExtensionContext) {
             stream.markdown('\n- "Find portfolio information about design"');
             stream.markdown('\n- "Run script1 with hello and world"');
             stream.markdown('\n- "Execute calculator script"');
+            stream.markdown('\n- "Analyze errors in C:\\\\logs\\\\app.log"');
+            stream.markdown('\n- "Check log file for issues"');
             return;
         }
 
@@ -59,7 +61,7 @@ export function activate(context: vscode.ExtensionContext) {
             stream.markdown(`
 ## 🤖 AI-Powered Assistant
 
-I can help you with math calculations and portfolio searches using AI and REST APIs!
+I can help you with math calculations, portfolio searches, script execution, and log file analysis using AI and REST APIs!
 
 ## 🧮 Math Operations
 - **Addition**: "Add 5 and 3", "What's 10 plus 20?"
@@ -74,6 +76,12 @@ I can help you with math calculations and portfolio searches using AI and REST A
 - **Script1 (Greeting)**: "Run script1 with hello and world", "Execute greeting script"
 - **Script2 (Calculator)**: "Run calculator with 15 25 multiply", "Execute script2 with numbers"
 - **Available Scripts**: script1, script2, greeting, calculator
+
+## 📋 Log File Analysis (AI-Powered)
+- **Error Analysis**: "Analyze errors in C:\\\\logs\\\\app.log", "Check log file for issues"
+- **Log Reading**: "Read log file ./logs/error.log", "Show me latest errors"
+- **Supported Formats**: .log, .txt, .out and other text-based log files
+- **AI Solutions**: Automatically provides troubleshooting recommendations
 
 ## 🔄 How Portfolio Search Works
 1. **REST API Call**: Fetches real data from JSONPlaceholder API
@@ -107,6 +115,8 @@ I can help you with math calculations and portfolio searches using AI and REST A
         stream.markdown('\n- "Find user information" (Portfolio API)');
         stream.markdown('\n- "Run script1 with hello world" (PowerShell)');
         stream.markdown('\n- "Execute calculator script" (PowerShell)');
+        stream.markdown('\n- "Analyze errors in C:\\\\logs\\\\app.log" (Log Analysis)');
+        stream.markdown('\n- "Check log file for issues" (Log Analysis)');
         stream.markdown('\n\n💡 I use AI to interpret your requests and call the appropriate functions or APIs!');
     };
 

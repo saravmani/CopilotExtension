@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import { handleMathFunction, mathFunctions } from './addons/mathUtils';
 import { handleScriptFunction, scriptFunctions } from './addons/scriptUtils';
 import { handlePortfolioFunction, portfolioFunctions } from './addons/portfolioUtils';
+import { handleLogFunction, logFunctions } from './addons/logUtils';
 
 /**
  * Main function call dispatcher and registry
@@ -13,7 +14,8 @@ import { handlePortfolioFunction, portfolioFunctions } from './addons/portfolioU
 export const availableFunctions = {
     ...mathFunctions,
     ...scriptFunctions,
-    ...portfolioFunctions
+    ...portfolioFunctions,
+    ...logFunctions
 };
 
 /**
@@ -33,8 +35,7 @@ export async function handleFunctionCall(
     prompt: string,
     stream: vscode.ChatResponseStream,
     model: vscode.LanguageModelChat
-): Promise<boolean> {
-    try {
+): Promise<boolean> {    try {
         switch (type) {
             case 'math':
                 await handleMathFunction(functionName, args, prompt, stream);
@@ -50,6 +51,11 @@ export async function handleFunctionCall(
             case 'script':
                 if (functionName === 'ExecuteScript') {
                     await handleScriptFunction(functionName, args, prompt, stream);
+                    return true;
+                }
+                break;            case 'log':
+                if (functionName === 'AnalyzeLogErrors' || functionName === 'ReadLogFile' || functionName === 'ListLogConfigurations') {
+                    await handleLogFunction(functionName, args, prompt, stream, model);
                     return true;
                 }
                 break;
